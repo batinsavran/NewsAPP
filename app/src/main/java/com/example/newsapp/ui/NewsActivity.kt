@@ -1,10 +1,10 @@
-package com.example.newsapp
+package com.example.newsapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newsapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class NewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
