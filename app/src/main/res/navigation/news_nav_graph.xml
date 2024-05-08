@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/headlinesFragment2">
+
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.newsapp.ui.fragments.ArticleFragment"
+        android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.newsapp.ui.fragments.FavoritesFragment"
+        android:label="FavoritesFragment" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/headlinesFragment2"
+        android:name="com.example.newsapp.ui.fragments.HeadlinesFragment"
+        android:label="HeadlinesFragment" >
+        <action
+            android:id="@+id/action_headlinesFragment2_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="com.example.newsapp.ui.fragments.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment2_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+</navigation>
