@@ -32,4 +32,5 @@
             android:id="@+id/action_searchFragment2_to_articleFragment"
             app:destination="@id/articleFragment" />
     </fragment>
+
 </navigation>
