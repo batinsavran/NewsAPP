@@ -1,7 +1,6 @@
 package com.example.newsapp.db
 
 import android.content.Context
-import androidx.core.graphics.createBitmap
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -16,18 +15,18 @@ import kotlinx.coroutines.internal.synchronized
 )
 
 @TypeConverters(Converters::class)
-abstract class ArticleDatabase: RoomDatabase() {
+abstract class ArticleDatabase : RoomDatabase() {
 
     abstract fun getArticleDao(): ArticleDAO
 
-    companion object{
+    companion object {
         @Volatile
         private var instance: ArticleDatabase? = null
         private val LOCK = Any()
 
         @OptIn(InternalCoroutinesApi::class)
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-            instance ?: createDatabase(context).also{
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: createDatabase(context).also {
                 instance = it
             }
         }

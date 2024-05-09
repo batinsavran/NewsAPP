@@ -11,13 +11,12 @@
 
         <argument
             android:name="article"
-            app:argType="com.example.newsapp.data.models.Article"
-            />
+            app:argType="com.example.newsapp.data.models.Article" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.newsapp.ui.fragments.FavoritesFragment"
-        android:label="FavoritesFragment" >
+        android:label="FavoritesFragment">
         <action
             android:id="@+id/action_favoritesFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
@@ -25,7 +24,7 @@
     <fragment
         android:id="@+id/headlinesFragment2"
         android:name="com.example.newsapp.ui.fragments.HeadlinesFragment"
-        android:label="HeadlinesFragment" >
+        android:label="HeadlinesFragment">
         <action
             android:id="@+id/action_headlinesFragment2_to_articleFragment"
             app:destination="@id/articleFragment" />
@@ -33,7 +32,7 @@
     <fragment
         android:id="@+id/searchFragment2"
         android:name="com.example.newsapp.ui.fragments.SearchFragment"
-        android:label="SearchFragment" >
+        android:label="SearchFragment">
         <action
             android:id="@+id/action_searchFragment2_to_articleFragment"
             app:destination="@id/articleFragment" />
