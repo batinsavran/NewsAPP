@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <!-- Add your development certificates here -->
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <!-- Add your production certificates here -->
+    </string-array>
+</resources>
