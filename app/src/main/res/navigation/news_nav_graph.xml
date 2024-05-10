@@ -10,8 +10,8 @@
         android:label="ArticleFragment">
 
         <argument
-            android:name="article"
-            app:argType="com.example.newsapp.data.models.Article" />
+            android:name="defaultArt"
+            app:argType="com.example.newsapp.models.Article" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -27,6 +27,9 @@
         android:label="HeadlinesFragment">
         <action
             android:id="@+id/action_headlinesFragment2_to_articleFragment"
+            app:destination="@id/articleFragment" />
+        <action
+            android:id="@+id/action_headlinesFragment2_to_articleFragment2"
             app:destination="@id/articleFragment" />
     </fragment>
     <fragment
