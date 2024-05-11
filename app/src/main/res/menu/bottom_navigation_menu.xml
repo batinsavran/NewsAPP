@@ -4,16 +4,16 @@
     <item
         android:id="@+id/headlinesFragment"
         android:icon="@drawable/web_ico"
-        android:title="Headlines" />
+        android:title="@string/headlines" />
 
     <item
         android:id="@+id/favouritesFragment"
         android:icon="@drawable/heart_ico"
-        android:title="Favourites" />
+        android:title="@string/favourites" />
 
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/search_ico"
-        android:title="Search" />
+        android:title="@string/search" />
 
 </menu>

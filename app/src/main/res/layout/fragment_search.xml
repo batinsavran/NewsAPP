@@ -11,7 +11,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/alata"
-        android:text="Search"
+        android:text="@string/search"
         android:textColor="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -25,16 +25,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
         android:background="@drawable/search_border"
         android:drawableTint="@color/blue"
         android:fontFamily="@font/alata"
-        android:hint="Search news..."
+        android:hint="@string/search_news"
         android:padding="8dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSearch"

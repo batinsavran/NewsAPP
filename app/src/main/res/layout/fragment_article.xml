@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/heart_ico"
         app:tint="@color/blue"
         android:backgroundTint="@color/white"
