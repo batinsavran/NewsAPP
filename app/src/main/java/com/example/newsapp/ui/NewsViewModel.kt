@@ -113,6 +113,10 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
             }
         }
     }
+
+    fun deleteArticle(article: Article?) {
+        TODO("Not yet implemented")
+    }
 }
 
 private fun Any.searchNews(searchQuery: String, searchNewsPage: Int): Response<NewsResponse> {
