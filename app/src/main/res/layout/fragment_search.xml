@@ -11,7 +11,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/alata"
-        android:text="Search."
+        android:text="Search"
         android:textColor="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold"

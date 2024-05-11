@@ -9,7 +9,6 @@
     <item
         android:id="@+id/favouritesFragment"
         android:icon="@drawable/heart_ico"
-        android:iconTint="@color/white"
         android:title="Favourites" />
 
     <item
