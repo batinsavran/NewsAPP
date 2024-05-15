@@ -114,3 +114,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
         }
     }
 }
+
+private fun <E> List<E>.addAll(Article: List<Article>) {
+    TODO("Not yet implemented")
+}

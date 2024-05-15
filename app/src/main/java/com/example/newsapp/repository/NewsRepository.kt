@@ -3,6 +3,8 @@ package com.example.newsapp.repository
 import com.example.newsapp.api.RetrofitInstance
 import com.example.newsapp.db.ArticleDatabase
 import com.example.newsapp.models.Article
+import com.example.newsapp.models.NewsResponse
+import retrofit2.Response
 
 // Haber verilerini yönetmek için Repository sınıfı
 class NewsRepository(val db: ArticleDatabase) {
@@ -23,4 +25,8 @@ class NewsRepository(val db: ArticleDatabase) {
 
     // Veritabanından makale silmek için fonksiyon
     suspend fun deleteArticle(article: Article) = db.getArticleDao().deleteArticle(article)
+
+    fun searchNews(searchQuery: String, searchNewsPage: Int): Response<NewsResponse> {
+        TODO("Not yet implemented")
+    }
 }
