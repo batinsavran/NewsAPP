@@ -43,9 +43,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
             response.body()?.let { resultResponse ->
                 headlinesPage++
                 if (headlinesResponse == null) {
-                    headlinesResponse = resultResponse
+                    this.headlinesResponse = resultResponse
                 } else {
-                    val oldArticles = headlinesResponse!!.articles
+                    val oldArticles = this.headlinesResponse!!.articles
                     val newArticles = resultResponse.articles
                     oldArticles.addAll(newArticles)
                 }
@@ -113,16 +113,4 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
             }
         }
     }
-
-    fun deleteArticle(article: Article?) {
-        TODO("Not yet implemented")
-    }
-}
-
-private fun Any.searchNews(searchQuery: String, searchNewsPage: Int): Response<NewsResponse> {
-    TODO("Not yet implemented")
-}
-
-private fun <E> List<E>.addAll(newArticles: List<E>) {
-    TODO("Not yet implemented")
 }
