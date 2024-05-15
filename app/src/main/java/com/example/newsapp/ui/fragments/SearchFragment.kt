@@ -21,6 +21,7 @@ import com.example.newsapp.databinding.FragmentSearchBinding
 import com.example.newsapp.ui.NewsActivity
 import com.example.newsapp.ui.NewsViewModel
 import com.example.newsapp.util.Constants
+import com.example.newsapp.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.newsapp.util.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -62,7 +63,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.searchEdit.addTextChangedListener() { editable ->
             job?.cancel()
             job = MainScope().launch {
-                delay()
+                SEARCH_NEWS_TIME_DELAY
                 editable?.let {
                     if (editable.toString().isNotEmpty()) {
                         newsViewModel.searchNews(editable.toString())
@@ -171,9 +172,5 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             layoutManager = LinearLayoutManager(activity)
             addOnScrollListener(this@SearchFragment.scrollListener)
         }
-    }
-
-    private fun delay() {
-        TODO("Not yet implemented")
     }
 }
