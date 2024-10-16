@@ -33,8 +33,8 @@ abstract class ArticleDatabase : RoomDatabase() {
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                ArticleDatabase::class.java, // Veritabanı sınıfı
-                "article_db.db" // Veritabanı dosya adı
-            ).build() // Veritabanı oluşturulur ve döner
+                ArticleDatabase::class.java,
+                "article_db.db"
+            ).build()
     }
 }
