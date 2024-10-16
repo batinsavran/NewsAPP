@@ -41,8 +41,3 @@ This application uses the NewsAPI, a free news API. To use the API, you need to 
 const val API_KEY = "YOUR_API_KEY" 
 ```
 
-## Contact
-
-[Batın Gökçe Savran](https://github.com/batinsavran/)  - [LinkedIn](https://www.linkedin.com/in/bat%C4%B1n-g%C3%B6k%C3%A7e-savran-46152b25b/)
-
-Email: batinsavran00@gmail.com 
