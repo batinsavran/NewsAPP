@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,18 +53,17 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
             findNavController().navigate(R.id.action_headlinesFragment_to_articleFragment, bundle)
         }
 
-        newsViewModel.headline.observe(viewLifecycleOwner, Observer { response ->
+        newsViewModel.headline.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success<*> -> {
                     hideProgressBar()
                     hideError()
-                    response.data?.let {
-                        newsResponse ->
+                    response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = newsViewModel.headlinesPage == totalPages
-                        if (isLastPage){
-                            binding.recyclerHeadlines.setPadding(0,0,0,0)
+                        if (isLastPage) {
+                            binding.recyclerHeadlines.setPadding(0, 0, 0, 0)
                         }
                     }
                 }
@@ -82,7 +80,7 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
                     showProgressBar()
                 }
             }
-        })
+        }
 
         retryButton.setOnClickListener {
             newsViewModel.getHeadlines("us")
@@ -115,7 +113,7 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
         isError = false
     }
 
-    val scrollListener = object : RecyclerView.OnScrollListener() {
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)

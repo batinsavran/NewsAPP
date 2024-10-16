@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,7 +59,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
 
         var job: Job? = null
-        binding.searchEdit.addTextChangedListener() { editable ->
+        binding.searchEdit.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
                 SEARCH_NEWS_TIME_DELAY
@@ -71,7 +70,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 }
             }
         }
-        newsViewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
+        newsViewModel.searchNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success<*> -> {
                     hideProgressBar()
@@ -98,7 +97,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     showProgressBar()
                 }
             }
-        })
+        }
         retryButton.setOnClickListener {
             if (binding.searchEdit.text.toString().isNotEmpty()) {
                 newsViewModel.searchNews(binding.searchEdit.text.toString())
@@ -133,7 +132,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         isError = false
     }
 
-    val scrollListener = object : RecyclerView.OnScrollListener() {
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)

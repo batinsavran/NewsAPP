@@ -15,16 +15,13 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-class NewsViewModel(app: Application, val newsRepository: NewsRepository) : AndroidViewModel(app) {
+class NewsViewModel(app: Application, private val newsRepository: NewsRepository) : AndroidViewModel(app) {
     var headline: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var headlinesPage = 1
-    var headlinesResponse: NewsResponse? = null
+    private var headlinesResponse: NewsResponse? = null
 
     var searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var searchNewsPage = 1
-    var searchNewsResponse: NewsResponse? = null
-    var newSearchQuery: String? = null
-    var oldSearchQuery: String? = null
+    private var newSearchQuery: String? = null
 
     init {
         getHeadlines("us")
@@ -45,9 +42,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
                 if (headlinesResponse == null) {
                     this.headlinesResponse = resultResponse
                 } else {
-                    val oldArticles = this.headlinesResponse!!.articles
-                    val newArticles = resultResponse.articles
-                    oldArticles.addAll(newArticles)
+                    this.headlinesResponse!!.articles
+                    resultResponse.articles
+                    addAll()
                 }
                 return Resource.Success(headlinesResponse ?: resultResponse)
             }
@@ -62,11 +59,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
 
     fun getFavouritesNews() = newsRepository.getFavouriteNews()
 
-    fun deleteToFavourites(article: Article) = viewModelScope.launch {
-        newsRepository.deleteArticle(article)
-    }
-
-    fun internetConnection(context: Context): Boolean {
+    private fun internetConnection(context: Context): Boolean {
         (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).apply {
             return getNetworkCapabilities(activeNetwork)?.run {
                 when {
@@ -82,7 +75,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
     private suspend fun headlinesInternet(countryCode: String) {
         headline.postValue(Resource.Loading())
         try {
-            if (internetConnection(this.getApplication())!!) {
+            if (internetConnection(this.getApplication())) {
                 val response = newsRepository.getHeadlines(countryCode, headlinesPage)
                 headline.postValue(handleHeadlinesResponse(response))
             } else {
@@ -96,7 +89,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
         }
     }
 
-    private suspend fun searchNewsInternet(searchQuery: String) {
+    private fun searchNewsInternet(searchQuery: String) {
         newSearchQuery = searchQuery
         searchNews.postValue(Resource.Loading())
         try {
@@ -115,6 +108,6 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
     }
 }
 
-private fun <E> List<E>.addAll(Article: List<Article>) {
+private fun addAll() {
     TODO("Not yet implemented")
 }
