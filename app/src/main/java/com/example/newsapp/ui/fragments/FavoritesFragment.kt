@@ -61,7 +61,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
                 // Makaleyi favorilerden sil
-                newsViewModel.deleteArticle(article)
+                //newsViewModel.deleteArticle(article)
                 // Silme işlemi başarılıysa kullanıcıya bilgi ver
                 Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_LONG).apply {
                     // Geri alma işlemi için Action oluştur

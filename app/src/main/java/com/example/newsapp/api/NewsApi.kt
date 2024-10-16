@@ -6,28 +6,25 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-// Haber API'si ile iletişim kurmak için kullanılan Retrofit arayüzü
 interface NewsApi {
 
-    // Üst haber başlıklarını almak için GET isteği
     @GET("v2/top-headlines")
     suspend fun getHeadlines(
         @Query("country")
-        countryCode: String = "us", // Ülke kodu, varsayılan olarak "us" (Amerika Birleşik Devletleri)
+        countryCode: String = "us",
         @Query("page")
-        pageNumber: Int = 1, // Sayfa numarası, varsayılan olarak 1
+        pageNumber: Int = 1,
         @Query("apiKey")
-        apiKey: String = API_KEY // API anahtarı, sabitler dosyasından alınır
-    ): Response<NewsResponse> // Yanıt, NewsResponse türünde bir Response nesnesi olarak döner
+        apiKey: String = API_KEY
+    ): Response<NewsResponse>
 
-    // Haber aramak için GET isteği
     @GET("v2/everything")
     suspend fun searchForNews(
         @Query("q")
-        searchQuery: String, // Arama sorgusu
+        searchQuery: String,
         @Query("page")
-        pageNumber: Int = 1, // Sayfa numarası, varsayılan olarak 1
+        pageNumber: Int = 1,
         @Query("apiKey")
-        apiKey: String = API_KEY // API anahtarı, sabitler dosyasından alınır
-    ): Response<NewsResponse> // Yanıt, NewsResponse türünde bir Response nesnesi olarak döner
+        apiKey: String = API_KEY
+    ): Response<NewsResponse>
 }
